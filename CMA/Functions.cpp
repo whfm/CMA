@@ -81,7 +81,7 @@ int menu_search() {
 	do {
 		system("cls");
 		cout << "\t\t\nSearch for:";
-		cout << "\n1 - Contact number";
+		cout << "\n1 - Contact ID";
 		cout << "\n2 - First name";
 		cout << "\n3 - Last name";
 		cout << "\n4 - Cancel and return to main menu";
@@ -114,7 +114,7 @@ void display_vector(vector<Contact> &v)
 	{
 		cout << v[count] << endl;
 	}
-	cout << "\nPress any key to go back to the main menu.";
+	cout << "Press any key to go back to the main menu.";
 }
 
 void search_vector(vector<Contact> &v, string value)
