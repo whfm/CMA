@@ -9,12 +9,14 @@
 
 using namespace std;
 
+/*Structure DATE*/
 struct Date {
 	int day;
 	int month;
 	int year;
 };
 
+/*Structure ADDRESS*/
 struct Address {
 	int streetNumber;
 	string streetName;
@@ -24,6 +26,7 @@ struct Address {
 	string country;
 };
 
+/*Structure CONTACT*/
 struct Contact {
 	string contactID;
 	string fn;
@@ -35,7 +38,8 @@ struct Contact {
 	Address add;
 };
 
-void sort_contacts(vector<Contact> &v, int choice);
+/*Functions prototypes*/
+void sort_contacts(vector<Contact> *v, int choice);
 void search_vector(vector<Contact> &v, string value);
 void display_vector(vector<Contact> &v);
 int menu_sort();

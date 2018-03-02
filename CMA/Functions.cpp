@@ -1,5 +1,6 @@
 #include "Header.h"
 
+/*Overloading the << (COUT) operator*/
 ostream &operator << (ostream & out_stream, Contact &v) {
 	out_stream << "Contact ID: " << v.contactID << endl <<
 		"First Name: " << v.fn << endl
@@ -17,7 +18,7 @@ ostream &operator << (ostream & out_stream, Contact &v) {
 	return out_stream;
 }
 
-
+/*Overloading the >> (CIN) operator*/
 istream &operator >> (istream & in_stream, Contact &v) {
 	cout << "Contact ID: ";
 	in_stream >> v.contactID;
@@ -54,12 +55,14 @@ istream &operator >> (istream & in_stream, Contact &v) {
 	return in_stream;
 }
 
+/*Function to add a contact to the vector*/
 void add_contact(vector<Contact> &aContact, int &vecSize) {
 	aContact.push_back(Contact());
 	cin >> aContact[vecSize];
 	vecSize++;
 }
 
+/*Main menu display*/
 int main_menu() {
 	int menu = 0;
 	do {
@@ -76,6 +79,7 @@ int main_menu() {
 	return menu;
 }
 
+/*Search menu display*/
 int menu_search() {
 	int menu = 0;
 	do {
@@ -91,6 +95,7 @@ int menu_search() {
 	return menu;
 }
 
+/*Sort menu display*/
 int menu_sort() {
 	int menu = 0;
 	do {
@@ -106,6 +111,7 @@ int menu_sort() {
 	return menu;
 }
 
+/*Function to display the vector array*/
 void display_vector(vector<Contact> &v)
 {
 	system("cls");
@@ -117,13 +123,14 @@ void display_vector(vector<Contact> &v)
 	cout << "Press any key to go back to the main menu.";
 }
 
+/*Function to search through a vector*/
 void search_vector(vector<Contact> &v, string value)
 {
 	system("cls");
 	bool found = false;
 	for (int count = 0; count < v.size(); count++)
 	{
-		if (v[count].phone == value || v[count].fn == value || v[count].ln == value) {
+		if (v[count].contactID == value || v[count].fn == value || v[count].ln == value) {
 			cout << "\nYour search matches the following results:\n";
 			cout << v[count];
 			found = true;
@@ -134,21 +141,22 @@ void search_vector(vector<Contact> &v, string value)
 	}
 }
 
-void sort_contacts(vector<Contact> &v, int choice) {
+/*Function to sort the contacts array*/
+void sort_contacts(vector<Contact> *v, int choice) {
 	if (choice == 1) {
-		sort(v.begin(), v.end(), [](const Contact& lhs, const Contact& rhs)
+		sort(v->begin(), v->end(), [](const Contact &lhs, const Contact &rhs)
 		{
 			return lhs.contactID < rhs.contactID;
 		});
 	}
 	else if (choice == 2) {
-		sort(v.begin(), v.end(), [](const Contact& lhs, const Contact& rhs)
+		sort(v->begin(), v->end(), [](const Contact &lhs, const Contact &rhs)
 		{
 			return lhs.fn < rhs.fn;
 		});
 	}
 	else if (choice == 3) {
-		sort(v.begin(), v.end(), [](const Contact& lhs, const Contact& rhs)
+		sort(v->begin(), v->end(), [](const Contact &lhs, const Contact &rhs)
 		{
 			return lhs.ln < rhs.ln;
 		});
