@@ -72,10 +72,11 @@ int main_menu() {
 		cout << "\n2 - Display all the contacts";
 		cout << "\n3 - Search for a contact";
 		cout << "\n4 - Sort the contacts";
-		cout << "\n5 - Exit application";
+		cout << "\n5 - Delete a contact";
+		cout << "\n6 - Exit application";
 		cout << "\n\nEnter your choice: ";
 		cin >> menu;
-	} while (menu > 5 || menu < 1);
+	} while (menu > 6 || menu < 1);
 	return menu;
 }
 
@@ -138,6 +139,33 @@ void search_vector(vector<Contact> &v, string value)
 	}
 	if (!found) {
 		cout << "\nYour search didn't return any result.";
+	}
+}
+
+/*Remove a contact from a vector*/
+void remove_contact(vector<Contact> &v, string value)
+{
+	system("cls");
+	bool found = false;
+	for (int count = 0; count < v.size(); count++)
+	{
+		if (v[count].contactID == value) {
+			v.erase(remove_if(v.begin(), v.end(), [&](Contact const & v) {
+				return v.contactID == value;
+			}), v.end());
+			cout << "\nContact erased from the list";
+			found = true;
+		}
+		else if (v[count].fn == value) {
+			v.erase(remove_if(v.begin(), v.end(), [&](Contact const & v) {
+				return v.fn == value;
+			}), v.end());
+			cout << "\nContact erased from the list";
+			found = true;
+		}
+	}
+	if (!found) {
+		cout << "\n\nPlease verify the entered data.";
 	}
 }
 

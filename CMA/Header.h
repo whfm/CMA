@@ -42,6 +42,7 @@ struct Contact {
 void sort_contacts(vector<Contact> *v, int choice);
 void search_vector(vector<Contact> &v, string value);
 void display_vector(vector<Contact> &v);
+void remove_contact(vector<Contact> &v, string value);
 int menu_sort();
 int menu_search();
 int main_menu();

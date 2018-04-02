@@ -18,6 +18,7 @@ int main() {
 
 	int choice = 0;
 	string search;
+	string cid;
 
 	do {
 		/*Switch case for the main menu*/
@@ -113,15 +114,24 @@ int main() {
 			}
 			break;
 		}
-			break;
+		break;
+
 		case 5:
+			system("cls");
+			cout << "Enter the 'Contact ID' or 'Contact First Name' you want to delete:";
+			cin >> cid;
+			remove_contact(aContact, cid);
+			cout << "\nPress any key to go back to the main menu";
+			system("Pause>>null");
+			break;
+		case 6:
 			/*Closes the program*/
-			choice = 5;
+			choice = 6;
 			break;
 		default: 
 			break;
 		}
-	} while (choice != 5);
+	} while (choice != 6);
 
 	return 0;
 }
